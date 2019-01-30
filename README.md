@@ -1,7 +1,7 @@
 # springboot-druid
 springboot-druid的配置（配置管理后台的servlet和配置一个web监控的filter）
 
-#application.yml
+# application.yml
 ```
 server:
   port: 1111
@@ -24,7 +24,7 @@ spring:
     testOnReturn: false
 ```
     
-#Druid的配置
+# Druid的配置
 ```
 @Configuration
 public class DruidConfig {

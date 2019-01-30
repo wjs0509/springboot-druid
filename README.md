@@ -2,6 +2,7 @@
 springboot-druid的配置（配置管理后台的servlet和配置一个web监控的filter）
 
 #application.yml
+```
 spring:
   datasource:
     username: root
@@ -19,8 +20,10 @@ spring:
     testWhileIdle: true
     testOnBorrow: false
     testOnReturn: false
+```
     
 #Druid的配置
+```
 @Configuration
 public class DruidConfig {
 
@@ -55,5 +58,7 @@ public class DruidConfig {
         return bean;
     }
 }
+
+```
 
 #访问http://localhost:1111/druid进行查看

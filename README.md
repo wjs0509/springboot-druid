@@ -3,6 +3,8 @@ springboot-druid的配置（配置管理后台的servlet和配置一个web监控
 
 #application.yml
 ```
+server:
+  port: 1111
 spring:
   datasource:
     username: root
@@ -61,4 +63,4 @@ public class DruidConfig {
 
 ```
 
-#访问http://localhost:1111/druid进行查看
+#访问 http://localhost:1111/druid 进行查看

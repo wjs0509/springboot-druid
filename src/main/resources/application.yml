@@ -6,7 +6,7 @@ spring:
     password: root
     type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:mysql:///springboot?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: com.mysql.jdbc.Driver
     initialSize: 5
     minIdle: 5
     maxActive: 20
@@ -17,3 +17,10 @@ spring:
     testWhileIdle: true
     testOnBorrow: false
     testOnReturn: false
+
+  jpa:
+    hibernate:
+      #更新或者创建数据表
+      ddl-auto: update
+    #控制台显示sql
+    show-sql: true

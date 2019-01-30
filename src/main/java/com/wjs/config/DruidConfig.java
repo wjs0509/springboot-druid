@@ -9,9 +9,7 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import javax.servlet.Filter;
 import javax.sql.DataSource;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,7 +26,7 @@ public class DruidConfig {
 //    配置管理后台的servlet
     @Bean
     public ServletRegistrationBean statViewServlet(){
-        ServletRegistrationBean bean = new ServletRegistrationBean<>(new StatViewServlet(),"/druid/*");
+        ServletRegistrationBean bean = new ServletRegistrationBean(new StatViewServlet(),"/druid/*");
         Map<String,String> initParams = new HashMap<>();
         initParams.put("loginUsername","admin");
         initParams.put("loginPassword","123456");
@@ -39,8 +37,7 @@ public class DruidConfig {
 //    2.配置一个web监控的filter
     @Bean
     public FilterRegistrationBean webStatFilter(){
-        FilterRegistrationBean<Filter> bean = new FilterRegistrationBean<>();
-        bean.setFilter(new WebStatFilter());
+        FilterRegistrationBean bean = new FilterRegistrationBean(new WebStatFilter());
 
         //设置过滤器过滤路径
         bean.addUrlPatterns("/*");

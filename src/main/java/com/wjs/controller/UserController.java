@@ -1,30 +1,45 @@
 package com.wjs.controller;
 
 import com.wjs.entity.User;
-import com.wjs.repository.UserRepository;
+import com.wjs.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.util.List;
 
 @RestController
 public class UserController {
 
     @Autowired
-    UserRepository userRepository;
+    UserService userService;
 
     @GetMapping("/user/{id}")
     public User getUser(@PathVariable("id") Integer id){
-        User user = userRepository.findOne(id);
-        return user;
+        return userService.findUser(id);
     }
 
-    @GetMapping("/user")
-    public User insetUser(User user){
-        User save = userRepository.save(user);
-        return save;
+    @PostMapping("/user")
+    public User insetUser(@RequestBody User user){
+        return userService.saveUser(user);
+    }
+
+    @GetMapping("/getAll")
+    public List<User> getUsers(){
+        return userService.findAllUser();
+    }
+
+    @GetMapping("/delete/{id}")
+    public Boolean  deleteUser(@PathVariable("id") String id){
+        return userService.deleteUser(Integer.valueOf(id));
+    }
+
+    @PostMapping("/update")
+    public User updateUser(Integer id,String lastName,String email){
+        User user = userService.findUser(id);
+        user.setLastName(lastName);
+        user.setEmail(email);
+        userService.updateUser(user);
+        return user;
     }
 }
 

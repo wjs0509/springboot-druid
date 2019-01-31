@@ -20,7 +20,9 @@ spring:
 
   jpa:
     hibernate:
-      #更新或者创建数据表
       ddl-auto: update
-    #控制台显示sql
+    # 鎺у埗鍙版樉绀簊ql
     show-sql: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8

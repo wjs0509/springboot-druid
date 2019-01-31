@@ -1,4 +1,4 @@
-# springboot-druid
+# springboot(1.5.13)-druid&jpa
 springboot-druid的配置（配置管理后台的servlet和配置一个web监控的filter）
 
 # application.yml
@@ -11,7 +11,7 @@ spring:
     password: root
     type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:mysql:///springboot?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: com.mysql.jdbc.Driver
     initialSize: 5
     minIdle: 5
     maxActive: 20
@@ -39,7 +39,7 @@ public class DruidConfig {
 //    配置管理后台的servlet
     @Bean
     public ServletRegistrationBean statViewServlet(){
-        ServletRegistrationBean bean = new ServletRegistrationBean<>(new StatViewServlet(),"/druid/*");
+        ServletRegistrationBean bean = new ServletRegistrationBean(new StatViewServlet(),"/druid/*");
         Map<String,String> initParams = new HashMap<>();
         initParams.put("loginUsername","admin");
         initParams.put("loginPassword","123456");
@@ -50,7 +50,7 @@ public class DruidConfig {
 //    2.配置一个web监控的filter
     @Bean
     public FilterRegistrationBean webStatFilter(){
-        FilterRegistrationBean<Filter> bean = new FilterRegistrationBean<>();
+        FilterRegistrationBean bean = new FilterRegistrationBean();
         bean.setFilter(new WebStatFilter());
 
         //设置过滤器过滤路径

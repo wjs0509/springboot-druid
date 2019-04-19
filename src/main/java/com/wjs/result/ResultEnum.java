@@ -4,6 +4,8 @@ public enum ResultEnum {
     // 成功
     SUCCESS(200,"成功"),
 
+//    无数据
+    NODATA(201,"查询无数据"),
     // 失败
     FAIL(400,"失败"),
 

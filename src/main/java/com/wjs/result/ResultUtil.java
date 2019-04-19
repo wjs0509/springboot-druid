@@ -14,6 +14,13 @@ public class ResultUtil {
 
         return success(null);
     }
+
+    public static Result nodata(String msg){
+        Result result = new Result();
+        result.setCode(ResultEnum.NODATA.getCode());
+        result.setMsg(msg);
+        return result;
+    }
     /**失败**/
     public static Result error(Integer code,String msg){
         Result result = new Result();

@@ -22,6 +22,9 @@ public class UserServiceImpl implements UserService {
 //    删除user
     @Override
     public Boolean deleteUser(Integer id) {
+        if (id == null) {
+            return false;
+        }
         User user = userRepository.findOne(id);
         if (user != null) {
             userRepository.delete(id);
@@ -33,9 +36,13 @@ public class UserServiceImpl implements UserService {
 
 //    修改user
     @Override
-    public User updateUser(User user) {
-        User save = userRepository.save(user);
-        return save;
+    public Boolean updateUser(User user) {
+        if(user.getId() != null){
+            userRepository.save(user);
+            return true;
+        }else {
+            return false;
+        }
     }
 
 //    查找user

@@ -7,7 +7,7 @@ import java.util.List;
 public interface UserService {
     User saveUser(User user);
     Boolean deleteUser(Integer id);
-    User updateUser(User user);
+    Boolean updateUser(User user);
     User findUser(Integer id);
     List<User> findAllUser();
 }
